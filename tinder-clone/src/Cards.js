@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 
 import TinderCard from 'react-tinder-card'
 
-import './TinderCards.css'
+import './Cards.css'
 
-function TinderCards() {
+function Cards() {
 
     const [people, setPeople] = useState([
         {
@@ -30,8 +30,8 @@ function TinderCards() {
     }
 
     return (
-        <div className="tinderCards">
-            <div className="tinderCards_CardContainer">
+        <div className="Cards">
+            <div className="Cards_CardContainer">
                 {people.map(person => (
                     <TinderCard
                         className="swipe"
@@ -55,4 +55,4 @@ function TinderCards() {
     )
 }
 
-export default TinderCards
+export default Cards
