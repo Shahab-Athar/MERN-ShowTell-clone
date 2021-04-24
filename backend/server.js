@@ -1,5 +1,6 @@
 import express from 'express'
 import mongoose from 'mongoose'
+import Cors from 'cors'
 
 import password from './config.js'
 import Cards from './dbCards.js '
@@ -8,6 +9,11 @@ import Cards from './dbCards.js '
 const app = express()
 const port = process.env.PORT || 8001
 const connection_url = `mongodb+srv://admin:${password}@cluster0.co4vh.mongodb.net/ShowTelldb?retryWrites=true&w=majority`
+
+// MiddleWare
+app.use(express.json())
+app.use(Cors())
+
 
 // DB Config
 mongoose.connect(connection_url, {
@@ -20,9 +26,9 @@ mongoose.connect(connection_url, {
 app.get("/", (req, res) => res.status(200).send("Hello World"))
 
 app.post('/showtell/cards', (req, res) => {
-    const dbcards = req.body
+    const dbCards = req.body
 
-    Cards.create(dbCard, (err, data) => {
+    Cards.create(dbCards, (err, data) => {
         if (err) {
             res.status(500).send(err)
         } else {
